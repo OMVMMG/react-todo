@@ -2,3 +2,4 @@ node_modules/
 sync.ffs_db
 sync.ffs_lock
 public/bundle.js
+config/
