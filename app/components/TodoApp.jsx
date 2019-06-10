@@ -1,6 +1,7 @@
-var React = require('react');
-var uuid = require('node-uuid');
-var moment = require('moment');
+import React from 'react';
+import * as Redux from 'react-redux';
+//var uuid = require('node-uuid');
+//var moment = require('moment');
 
 //var TodoList = require('TodoList');
 import TodoList from 'TodoList'
@@ -9,8 +10,9 @@ import AddTodo from 'AddTodo';
 //var TodoSearch = require('TodoSearch');
 import TodoSearch from 'TodoSearch';
 // var TodoAPI = require('TodoAPI');
+import * as actions from 'actions';
 
-var TodoApp = React.createClass({
+export var TodoApp = React.createClass({
   // getInitialState: function () {
   //   return {
   //     showCompleted: false,
@@ -71,12 +73,21 @@ var TodoApp = React.createClass({
   //       searchText: searchText.toLowerCase()
   //     });
   //   },
-    render: function () {
+  onLogout(e) {
+    var {dispatch} = this.props;
+    e.preventDefault();
+
+    dispatch(actions.startLogout());
+  },
+    render() {
       // var {todos, showCompleted, searchText} = this.state;
       // var filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
 
       return (
         <div>
+          <div className="page-actions">
+            <a href="#" onClick={this.onLogout}>Logout</a>
+          </div>
           <h1 className="page-title">Todo App</h1>
 
           <div className="row">
@@ -93,4 +104,5 @@ var TodoApp = React.createClass({
     }
   });
 
-module.exports = TodoApp;
+//module.exports = TodoApp;
+export default Redux.connect()(TodoApp);
