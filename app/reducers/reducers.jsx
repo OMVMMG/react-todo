@@ -10,15 +10,13 @@ export var searchTextReducer = (state = '', action) => {
   };
 };
 
-// showCompleted Reducer, default false, TOGGLE_SHOW_COMPLETED
-
 export var showCompletedReducer = (state = false, action) => {
   switch (action.type) {
     case 'TOGGLE_SHOW_COMPLETED':
       return !state;
     default:
       return state;
-  };
+  }
 };
 
 export var todosReducer = (state = [], action) => {
@@ -26,40 +24,38 @@ export var todosReducer = (state = [], action) => {
     case 'ADD_TODO':
       return [
         ...state,
-        // {
-        //   id: uuid(),
-        //   text: action.text,
-        //   completed: false,
-        //   createdAt: moment().unix(),
-        //   completedAt: undefined
-        // }
         action.todo
       ];
-      // add case for TOGGLE_TODO
     case 'UPDATE_TODO':
-        return state.map((todo) => {
-          if (todo.id === action.id) {
-            // var nextCompleted = !todo.completed;
-            //
-            // return {
-            //   ...todo,
-            //   completed: nextCompleted,
-            //   completedAt: nextCompleted ? moment().unix() : undefined
-            // };
-            return {
-              ...todo,
-              ...action.updates
-            };
-          } else {
-            return todo;
-          }
-        });
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          return {
+            ...todo,
+            ...action.updates
+          };
+        } else {
+          return todo;
+        }
+      });
     case 'ADD_TODOS':
-          return [
-            ...state,
-            ...action.todos
-          ];
+      return [
+        ...state,
+        ...action.todos
+      ];
     default:
-    return state;
-  };
+      return state;
+  }
+};
+
+export var authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return {
+        uid: action.uid
+      };
+    case 'LOGOUT':
+      return {};
+    default:
+      return state;
+  }
 };
