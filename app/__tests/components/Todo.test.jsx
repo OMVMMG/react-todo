@@ -8,7 +8,7 @@ import * as actions from 'actions';
 import {Todo} from 'Todo';
 
 describe('Todo', () => {
-  it('should exist', () => {
+  it('should exists', () => {
     expect(Todo).toExist();
   });
 
@@ -27,5 +27,6 @@ describe('Todo', () => {
     TestUtils.Simulate.click($el[0]);
 
     expect(spy).toHaveBeenCalledWith(action);
+
   });
 });

@@ -15,7 +15,7 @@ describe('Reducers', () => {
       expect(res).toEqual(action.searchText);
     });
   });
-
+//Test that the showCompleted status gets flipped
   describe('showCompletedReducer', () => {
     it('should toggle showCompleted', () => {
       var action = {
@@ -33,7 +33,7 @@ describe('Reducers', () => {
         type: 'ADD_TODO',
         todo: {
           id: 'abc123',
-          text: 'Something to do',
+          text: 'Something todo',
           completed: false,
           createdAt: 92384275
         }
@@ -49,8 +49,8 @@ describe('Reducers', () => {
         id: '123',
         text: 'Something',
         completed: true,
-        createdAt: 123,
-        completedAt: 125
+        completedAt: 125,
+        createdAt:123
       }];
       var updates = {
         completed: false,
@@ -68,7 +68,7 @@ describe('Reducers', () => {
       expect(res[0].text).toEqual(todos[0].text);
     });
 
-    it('should add existing todos', () => {
+    it('sould add existing todos', () => {
       var todos = [{
         id: '111',
         text: 'anything',
@@ -85,31 +85,6 @@ describe('Reducers', () => {
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(todos[0]);
     });
-  });
 
-  describe('authReducer', () => {
-    it('should store uid on LOGIN', () => {
-      const action = {
-        type: 'LOGIN',
-        uid: 'abc123'
-      };
-      const res = reducers.authReducer(undefined, df(action));
-
-      expect(res).toEqual({
-        uid: action.uid
-      });
-    });
-
-    it('should wipe auth on LOGOUT', () => {
-      const authData = {
-        uid: '123abc'
-      };
-      const action = {
-        type: 'LOGOUT'
-      };
-      const res = reducers.authReducer(df(authData), df(action));
-
-      expect(res).toEqual({});
-    });
   });
 });

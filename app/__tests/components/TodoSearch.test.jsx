@@ -4,9 +4,10 @@ var TestUtils = require('react-addons-test-utils');
 var expect = require('expect');
 var $ = require('jquery');
 
+//var TodoSearch = require('TodoSearch');
 import {TodoSearch} from 'TodoSearch';
 
-describe('TodoSearch', () => {
+describe("TodoSearch", () => {
   it('should exist', () => {
     expect(TodoSearch).toExist();
   });
@@ -16,7 +17,7 @@ describe('TodoSearch', () => {
     var action = {
       type: 'SET_SEARCH_TEXT',
       searchText
-    };
+    }
     var spy = expect.createSpy();
     var todoSearch = TestUtils.renderIntoDocument(<TodoSearch dispatch={spy}/>);
 
@@ -29,7 +30,7 @@ describe('TodoSearch', () => {
   it('should dispatch TOGGLE_SHOW_COMPLETED when checkbox checked', () => {
     var action = {
       type: 'TOGGLE_SHOW_COMPLETED'
-    };
+    }
     var spy = expect.createSpy();
     var todoSearch = TestUtils.renderIntoDocument(<TodoSearch dispatch={spy}/>);
 

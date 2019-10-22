@@ -8,7 +8,7 @@ import * as actions from 'actions';
 var {AddTodo} = require('AddTodo');
 
 describe('AddTodo', () => {
-  it('should exist', () => {
+  it('should exists', () => {
     expect(AddTodo).toExist();
   });
 
